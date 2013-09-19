@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>To-Do list</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap-combined.no-icons.min.css">
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css">
+		<link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fsocial-buttons.css">    
+		<script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.js"></script>
+		<style>
+			body{
+				background-image: url(https://developer.cdn.mozilla.net/media/img/bg-content.png);s
+			}
+			.alert{
+				background-color:#045514;
+				opacity:0.5;
+				color:white;
+				font-family:Cursive;
+				border-radius:5px;
+				width:60%;
+				margin:20px;
+				transition: .5s linear;
+			}
+			.headLbl{
+				font-family:'STYLUS BT';
+				box-shadow: 10px 10px 5px #888888;
+				width:20%;
+				border-radius:5px;
+			}
+			header{
+				margin:20px;
+			}
+			.inputCls{
+				margin: 20px 20px 0px 20px;
+				display:inline-block;
+				height:40px;
+				width:40%;
+			}
+			.addCls{
+				display:inline-block;
+				background-color:blue;
+				border-radius:7px;
+				height:30px;
+				color:white;
+				width:50px;
+				padding: 5px 0px 0px 10px;
+				vertical-align:middle;
+				opacity:0.3;
+				cursor:pointer;
+			
+			}
+			.doneBtn{
+				display:inline;
+				float:right;
+				color:red;
+				cursor:pointer;
+			}
+			
+		</style>
+		<script>
+			function add(){
+				debugger;
+				var divElem = document.createElement('div');
+				var inpElem = document.getElementById('input');
+				var doneElem = document.createElement('div');
+				
+				if(inpElem.value != ''){
+					$(divElem).addClass('alert')
+						  .html(inpElem.value)
+						  .fadeIn(300)
+						  .appendTo($('body'));
+					$(doneElem).addClass('doneBtn')
+						  .html('Done')
+						  .click(function(){
+							$(this).parent().remove();
+						  })						  
+						  .appendTo($(divElem));
+					$('.inputCls').val('');	  
+				}
+			}
+			
+			
+		</script>
+	</head>
+	
+	<body>
+		<header>	
+			<h1 class="headLbl">TO-DO List</h1>
+		</header>
+		<div>
+			<form method="post" action="/">
+            <input class="inputCls" type="text" name="item" id="input" />
+			<div class="addCls" onclick="add()" style="cursor:pointer">Add</div>
+            </form>
+		</div>
+		
+	</body>
+</html>
