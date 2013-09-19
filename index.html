@@ -9,7 +9,7 @@
 		<script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.js"></script>
 		<style>
 			body{
-				background-image: url(https://developer.cdn.mozilla.net/media/img/bg-content.png);s
+				background-image: url(https://developer.cdn.mozilla.net/media/img/bg-content.png);
 			}
 			.alert{
 				background-color:#045514;
@@ -40,13 +40,14 @@
 				display:inline-block;
 				background-color:blue;
 				border-radius:7px;
-				height:30px;
+				height:25px;
 				color:white;
 				width:50px;
 				padding: 5px 0px 0px 10px;
 				vertical-align:middle;
 				opacity:0.3;
 				cursor:pointer;
+				margin-top:8px;
 			
 			}
 			.doneBtn{
@@ -79,6 +80,17 @@
 				}
 			}
 			
+			$( document ).ready(function() {
+			  // Handler for .ready() called.
+				$('#input').keypress(function(event){
+					 var keycode = (event.keyCode ? event.keyCode : event.which);
+					if(keycode == '13') {
+						add();
+						return false;
+					}
+				})
+			});
+						
 			
 		</script>
 	</head>
