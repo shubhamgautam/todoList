@@ -3,10 +3,11 @@
 	<head>
 		<title>To-Do list</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap-combined.no-icons.min.css">
+		<link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup/code/bootstrap-combined.no-icons.min.css">
 		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css">
-		<link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fsocial-buttons.css">    
-		<script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.js"></script>
+		<link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup/code/social-buttons.css">    
+		<script src="https://d396qusza40orc.cloudfront.net/startup/code/jquery.js"></script>
+		<script src="js/utils.js"></script>
 		<style>
 			body{
 				background-image: url(https://developer.cdn.mozilla.net/media/img/bg-content.png);
@@ -58,35 +59,17 @@
 			
 		</style>
 		<script>
-			function add(){
-				var divElem = document.createElement('div');
-				var inpElem = document.getElementById('input');
-				var doneElem = document.createElement('div');
-				
-				if(inpElem.value != ''){
-					$(divElem).addClass('alert')
-						  .html(inpElem.value)
-						  .fadeIn(300)
-						  .appendTo($('body'));
-					$(doneElem).addClass('doneBtn')
-						  .html('Done')
-						  .click(function(){
-							$(this).parent().remove();
-						  })						  
-						  .appendTo($(divElem));
-					$('.inputCls').val('');	  
-				}
-			}
-			
-			$( document ).ready(function() {
-			  // Handler for .ready() called.
-				$('#input').keypress(function(event){
-					 var keycode = (event.keyCode ? event.keyCode : event.which);
-					if(keycode == '13') {
-						add();
+			$(document).ready(function () {
+				// Handler for .ready() called.
+				$('#input').keypress(function (event) {
+					var keycode = (event.keyCode ? event.keyCode : event.which);
+					if (keycode == '13') {
+						Add();
 						return false;
 					}
-				})
+				});
+				
+				ListAndBuildDivs();
 			});
 						
 			
